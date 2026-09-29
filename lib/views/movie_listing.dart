@@ -28,6 +28,7 @@ class _MovieListingState extends State<MovieListing> {
 
       drawer: const NavDrawer(),
       body: Container(
+
         padding: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -38,21 +39,30 @@ class _MovieListingState extends State<MovieListing> {
                     color: cinemaFontWhite,
                     fontSize: 22,
                     fontWeight: FontWeight.bold,)),
-            SizedBox(height: 30),
+            SizedBox(height: 40),
             Text('A strange doorway appears in the basement of a furniture showroom, leading to an endless network of interconnected rooms where time bends and the only thing scarier than getting lost is the sense that something is lying in wait.',
                   style: TextStyle(
                     color: cinemaFontWhite
 
                   )),
             SizedBox(height: 30),
-            Text('Southsea Cinema Room'),
-            SizedBox(height: 8),
-            Text('Thursday 22 Oct 2026  18:00 '),
+            Text('Southsea Cinema Room',
+                  style: TextStyle(
+                    color: cinemaFontMuted)),
+            SizedBox(height: 5),
+            Text('Thursday 22 Oct 2026  18:00 ',
+                  style: TextStyle(
+                    color: cinemaFontMuted)
+                ),
+            SizedBox(height: 40),
+            Text('Please note that Discounts / Membership Benefits will be applied once you have selected your tickets',
+                  style: TextStyle(
+                    color: cinemaFontMuted)),
+            SizedBox(height: 5),
+            Text('Select Quantities (Up to 5 in total)',
+                  style: TextStyle(
+                    color: cinemaFontMuted)),
             SizedBox(height: 30),
-            Text('Please note that Discounts / Membership Benefits will be applied once you have selected your tickets'),
-            SizedBox(height: 15),
-            Text('Select Quantities (Up to 5 in total)'),
-            SizedBox(height: 15),
             Text('Tickets',
             style: TextStyle(
               color: cinemaFontWhite,
@@ -81,7 +91,13 @@ class _MovieListingState extends State<MovieListing> {
                 ]
             ),
             SizedBox(height: 15),
-            ElevatedButton(onPressed: () => print('$_totaltickets Ticket(s) added to order'), child: Text('Add to Order'))
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: cinemaBrandDark,
+                foregroundColor: cinemaBackground
+              ),
+              onPressed: () => print('$_totaltickets Ticket(s) added to order'), 
+              child: Text('Add to Order'))
           ],
         )
       )
