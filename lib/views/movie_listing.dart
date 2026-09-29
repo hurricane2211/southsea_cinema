@@ -41,7 +41,7 @@ class _MovieListingState extends State<MovieListing> {
             Row(
               children: [
                 DropdownMenu<int>(
-                initialSelection: 7.50,
+                initialSelection: 1,
                 onSelected: (int? value) {
                   if (value !=null) {
                     setState(() {_totaltickets = value;}); 
@@ -58,7 +58,7 @@ class _MovieListingState extends State<MovieListing> {
                 Text('Adult (£7.50)')
                 ]
             ),
-            ElevatedButton(onPressed: () => print(''), child: child)
+            ElevatedButton(onPressed: () => debugPrint('$_totaltickets Ticket(s) added to order'), child: Text('Add to Order'))
           ],
         )
       )
