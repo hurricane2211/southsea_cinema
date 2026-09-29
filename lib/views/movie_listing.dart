@@ -14,8 +14,18 @@ class MovieListing extends StatelessWidget {
         iconTheme: const IconThemeData(color: cinemaBrand),
         elevation: 0,
       ),
+
       drawer: const NavDrawer(),
-      body: const SizedBox.shrink(),
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Backrooms'),
+            Text('A strange doorway appears in the basement of a furniture showroom, leading to an endless network of interconnected rooms where time bends and the only thing scarier than getting lost is the sense that something is lying in wait.')
+          ],
+        )
+      )
     );
   }
 }
