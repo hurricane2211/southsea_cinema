@@ -40,11 +40,13 @@ class _MovieListingState extends State<MovieListing> {
                     fontSize: 22,
                     fontWeight: FontWeight.bold,)),
             SizedBox(height: 40),
-            Text('A strange doorway appears in the basement of a furniture showroom, leading to an endless network of interconnected rooms where time bends and the only thing scarier than getting lost is the sense that something is lying in wait.',
-                  style: TextStyle(
-                    color: cinemaFontWhite
+            SizedBox(
+              width:1000,
+              child: Text('A strange doorway appears in the basement of a furniture showroom, leading to an endless network of interconnected rooms where time bends and the only thing scarier than getting lost is the sense that something is lying in wait.',
+                      style: TextStyle(
+                            color: cinemaFontWhite
 
-                  )),
+                  ))),
             SizedBox(height: 30),
             Text('Southsea Cinema Room',
                   style: TextStyle(
