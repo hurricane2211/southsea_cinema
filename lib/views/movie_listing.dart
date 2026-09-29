@@ -13,7 +13,7 @@ class MovieListing extends StatefulWidget {
 
 
 class _MovieListingState extends State<MovieListing> {
-  int _tickets = 1;
+  double _totalprice = 7.50;
 
 
   @override
@@ -39,16 +39,24 @@ class _MovieListingState extends State<MovieListing> {
             Text('Please note that Discounts / Membership Benefits will be applied once you have selected your tickets'),
             Text('Select Quantities (Up to 5 in total)'),
             Row(
-              children: [DropdownMenu<int>(
-                initialSelection: 1,
-                onSelected: (int? value) {
+              children: [
+                DropdownMenu<double>(
+                initialSelection: 7.50,
+                onSelected: (double? value) {
                   if (value !=null) {
-
+                    setState(() {_totalprice = value;}); 
                   }
                 },
                 dropdownMenuEntries: [
+                  DropdownMenuEntry(value: 7.50, label: '1'),
+                  DropdownMenuEntry(value: 7.50 * 2, label: '2'),
+                  DropdownMenuEntry(value: 7.50 * 3, label: '3'),
+                  DropdownMenuEntry(value: 7.50 * 4, label: '4'),
+                  DropdownMenuEntry(value: 7.50 * 5, label: '5')
 
-                ])]
+                ]),
+                Text('Adult (£7.50)')
+                ]
             )
           ],
         )
