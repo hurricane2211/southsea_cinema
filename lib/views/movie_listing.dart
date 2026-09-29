@@ -22,7 +22,14 @@ class MovieListing extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Backrooms'),
-            Text('A strange doorway appears in the basement of a furniture showroom, leading to an endless network of interconnected rooms where time bends and the only thing scarier than getting lost is the sense that something is lying in wait.')
+            Text('A strange doorway appears in the basement of a furniture showroom, leading to an endless network of interconnected rooms where time bends and the only thing scarier than getting lost is the sense that something is lying in wait.'),
+            Text(''),
+            Text(''),
+            Text(''),
+            Text(''),
+            Row(
+              children: []
+            )
           ],
         )
       )
