@@ -3,14 +3,21 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatefulWidget {
-  final int maxQuantity = 5;
   const MovieListing({super.key});
 
   @override
   State<StatefulWidget> createState() {
     return _MovieListingState();
   }
-  Widget build(BuildContext context) {
+}
+
+
+class _MovieListingState extends State<MovieListing> {
+  int _tickets = 1;
+
+
+  @override
+    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(appTitle, style: cinemaHeaderStyle),
@@ -50,13 +57,3 @@ class MovieListing extends StatefulWidget {
   }
 }
 
-
-class _MovieListingState extends State<MovieListing> {
-  int _tickets = 1;
-
-
-  @override
-  Widget build(BuildContext context) {
-
-  }
-}
