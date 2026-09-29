@@ -58,7 +58,7 @@ class _MovieListingState extends State<MovieListing> {
                 Text('Adult (£7.50)')
                 ]
             ),
-            ElevatedButton(onPressed: () => debugPrint('$_totaltickets Ticket(s) added to order'), child: Text('Add to Order'))
+            ElevatedButton(onPressed: () => print('$_totaltickets Ticket(s) added to order'), child: Text('Add to Order'))
           ],
         )
       )
