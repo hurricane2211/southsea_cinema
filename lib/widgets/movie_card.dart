@@ -10,7 +10,8 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        color: cinemaSurface,
+        margin: EdgeInsets.only(right: 16, left: 16, top:8, bottom: 8),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -20,7 +21,9 @@ class MovieCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(movie.imagePath,
-                      width: 80, height: 120, fit: BoxFit.fill),
+                      width: 150, height: 225, fit: BoxFit.fill),
+
+                  SizedBox(width: 30),
 
                   Expanded(
                     child: Column(
@@ -29,24 +32,26 @@ class MovieCard extends StatelessWidget {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                          Text(
-                            movie.title,
-                            style: TextStyle(
-                              color: cinemaBrand,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold
+                            Expanded(
+                              child: Text(
+                                    movie.title,
+                                    style: TextStyle(
+                                      color: cinemaBrand,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold
 
+                                    )
+                                  )),
+                              Text(
+                                movie.ageRating,
+                                style: TextStyle(
+                                  color: cinemaFontMuted,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold
+                                
+                              )
                             )
-                          ),
-                          Text(
-                            movie.ageRating,
-                            style: TextStyle(
-                              color: cinemaFontMuted,
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold
-                              
-                            )
-                          )
+                          
 
                         ]
                         ),
