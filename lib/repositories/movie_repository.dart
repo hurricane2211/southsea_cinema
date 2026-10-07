@@ -20,8 +20,8 @@ class MovieRepository {
         id: 'mission_impossible_rogue_nation',
         title: 'Mission Impossible: Rogue Nation',
         releaseYear: 2015,
-        ageRating: '12A',
-        description: 'After the closure of the Impossible Missions Force, its agent Ethan Hunt tries to avoid being captured by the CIA as he seeks to prove the existence of the Syndicate, a sophisticated terrorist outfit.',
+        ageRating: 'PG-13',
+        description: 'After the closure of the Impossible Missions Force, agent Ethan Hunt (Tom Cruise) seeks to prove the existence of the Syndicate, a sophisticated terrorist outfit, all whilst being hunted by the CIA.',
         price: 7.50,
         imagePath: 'assets/images/mirn_poster.png',
         screening: 'Friday 09 Oct 2026'
