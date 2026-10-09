@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListing extends StatefulWidget {
-  const MovieListing({super.key});
+  final Movie movie;
+  const MovieListing({
+    super.key,
+    required this.movie
+    });
 
   @override
   State<StatefulWidget> createState() {
@@ -19,7 +24,9 @@ class _MovieListingState extends State<MovieListing> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(appTitle, style: cinemaHeaderStyle),
+          title: Text(
+            'Purchase Movie Tickets',
+            style: cinemaHeaderStyle),
           backgroundColor: cinemaSurface,
           iconTheme: const IconThemeData(color: cinemaBrand),
           elevation: 0,
@@ -31,9 +38,9 @@ class _MovieListingState extends State<MovieListing> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Backrooms (2026) (15)',
+                Text('${widget.movie.title} ${widget.movie.ageRating}',
                     style: TextStyle(
-                      color: cinemaFontWhite,
+                      color: cinemaBrand,
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                     )),
@@ -41,13 +48,13 @@ class _MovieListingState extends State<MovieListing> {
                 SizedBox(
                     width: 1000,
                     child: Text(
-                        'A strange doorway appears in the basement of a furniture showroom, leading to an endless network of interconnected rooms where time bends and the only thing scarier than getting lost is the sense that something is lying in wait.',
+                        widget.movie.description,
                         style: TextStyle(color: cinemaFontWhite))),
                 SizedBox(height: 20),
                 Text('Southsea Cinema Room',
                     style: TextStyle(color: cinemaFontMuted)),
                 SizedBox(height: 5),
-                Text('Thursday 22 Oct 2026  18:00 ',
+                Text('${widget.movie.screening} @ 18:00 ',
                     style: TextStyle(color: cinemaFontMuted)),
                 SizedBox(height: 20),
                 Text(
@@ -79,7 +86,7 @@ class _MovieListingState extends State<MovieListing> {
                         DropdownMenuEntry(value: 5, label: '5')
                       ]),
                   SizedBox(width: 15),
-                  Text('Adult (£7.50)')
+                  Text('Adult (£${widget.movie.price})')
                 ]),
                 SizedBox(height: 5),
                 ElevatedButton(
