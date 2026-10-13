@@ -5,10 +5,7 @@ import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListing extends StatefulWidget {
   final Movie movie;
-  const MovieListing({
-    super.key,
-    required this.movie
-    });
+  const MovieListing({super.key, required this.movie});
 
   @override
   State<StatefulWidget> createState() {
@@ -24,9 +21,7 @@ class _MovieListingState extends State<MovieListing> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Purchase Movie Tickets',
-            style: cinemaHeaderStyle),
+          title: Text('Purchase Movie Tickets', style: cinemaHeaderStyle),
           backgroundColor: cinemaSurface,
           iconTheme: const IconThemeData(color: cinemaBrand),
           elevation: 0,
@@ -39,31 +34,26 @@ class _MovieListingState extends State<MovieListing> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.movie.title,
-                      style: TextStyle(
-                        color: cinemaBrand,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                    )),
-                    SizedBox(width: 10),
-                    Text(
-                      widget.movie.ageRating,
-                      style: TextStyle(
-                        color: cinemaFontMuted,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold
-                    ))
-                  ]
-                ),
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(widget.movie.title,
+                          style: TextStyle(
+                            color: cinemaBrand,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          )),
+                      SizedBox(width: 10),
+                      Text(widget.movie.ageRating,
+                          style: TextStyle(
+                              color: cinemaFontMuted,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold))
+                    ]),
                 SizedBox(height: 40),
                 SizedBox(
                     width: 1000,
-                    child: Text(
-                        widget.movie.description,
+                    child: Text(widget.movie.description,
                         style: TextStyle(color: cinemaFontWhite))),
                 SizedBox(height: 20),
                 Text('Southsea Cinema Room',
@@ -108,22 +98,13 @@ class _MovieListingState extends State<MovieListing> {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: cinemaBrandDark,
                         foregroundColor: cinemaBackground),
-                    onPressed: () =>
-                        setState(() {
-                          _orderMessage = '$_totaltickets Ticket(s) added to order';
-                          }),
+                    onPressed: () => setState(() {
+                          _orderMessage =
+                              '$_totaltickets Ticket(s) added to order';
+                        }),
                     child: Text('Add to Order')),
-
-
                 SizedBox(height: 5),
-
-                Text(
-                  _orderMessage,
-                  style: TextStyle(
-                    color: cinemaFontWhite
-                  ))
-
-                  
+                Text(_orderMessage, style: TextStyle(color: cinemaFontWhite))
               ],
             )));
   }

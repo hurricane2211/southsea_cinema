@@ -48,9 +48,7 @@ class MovieCard extends StatelessWidget {
                             SizedBox(height: 30),
                             Text(movie.description,
                                 style: TextStyle(
-                                  color: cinemaFontWhite,
-                                  fontSize: 15)
-                                )
+                                    color: cinemaFontWhite, fontSize: 15))
                           ]))
                     ],
                   ),
@@ -72,15 +70,10 @@ class MovieCard extends StatelessWidget {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: cinemaBackground),
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return MovieListing(movie: movie);
-                                  }
-                                )
-
-                              );
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return MovieListing(movie: movie);
+                              }));
                             },
                             child: Text('Book Now',
                                 style: TextStyle(color: cinemaFontWhite)))
@@ -125,8 +118,7 @@ class MovieCard extends StatelessWidget {
                             SizedBox(height: 15),
                             Text(movie.description,
                                 style: TextStyle(
-                                  color: cinemaFontWhite,
-                                  fontSize: 11))
+                                    color: cinemaFontWhite, fontSize: 11))
                           ]))
                     ],
                   ),
@@ -148,15 +140,10 @@ class MovieCard extends StatelessWidget {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: cinemaBackground),
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return MovieListing(movie: movie);
-                                  }
-                                )
-
-                              );
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return MovieListing(movie: movie);
+                              }));
                             },
                             child: Text('Book Now',
                                 style: TextStyle(color: cinemaFontWhite)))
