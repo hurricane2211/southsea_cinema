@@ -38,12 +38,27 @@ class _MovieListingState extends State<MovieListing> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('${widget.movie.title} ${widget.movie.ageRating}',
-                    style: TextStyle(
-                      color: cinemaBrand,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.movie.title,
+                      style: TextStyle(
+                        color: cinemaBrand,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                     )),
+                    SizedBox(width: 10),
+                    Text(
+                      widget.movie.ageRating,
+                      style: TextStyle(
+                        color: cinemaFontMuted,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold
+                    ))
+                  ]
+                ),
                 SizedBox(height: 40),
                 SizedBox(
                     width: 1000,
