@@ -30,7 +30,7 @@ class MovieRepository {
   }
 
 
-  Movie? getMovieByString(String id) {
+  Movie? getMovieById(String id) {
     for (final movie in getMovies()) {
       if (movie.id == id) {
         return movie;
