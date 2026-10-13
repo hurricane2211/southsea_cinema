@@ -19,4 +19,27 @@ class Movie {
     required this.screening
   });
 
+  String get formattedPrice {
+    final String formattedValue = price.toStringAsFixed(2);
+    return '£$formattedValue';
+  }
+
+  bool get isChildFriendly {
+    if (ageRating == 'PG' || ageRating == 'U') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  bool get isAdultOnly {
+    if (ageRating == '18') {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 }
