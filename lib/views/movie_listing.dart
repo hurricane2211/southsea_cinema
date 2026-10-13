@@ -101,7 +101,7 @@ class _MovieListingState extends State<MovieListing> {
                         DropdownMenuEntry(value: 5, label: '5')
                       ]),
                   SizedBox(width: 15),
-                  Text('Adult (£${widget.movie.price})')
+                  Text('Adult (£${widget.movie.formattedPrice})')
                 ]),
                 SizedBox(height: 5),
                 ElevatedButton(
