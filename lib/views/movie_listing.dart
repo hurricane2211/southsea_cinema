@@ -21,10 +21,7 @@ class _MovieListingState extends State<MovieListing> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Purchase Movie Tickets', style: cinemaHeaderStyle),
-          backgroundColor: cinemaSurface,
-          iconTheme: const IconThemeData(color: cinemaBrand),
-          elevation: 0,
+          title: Text('Purchase Movie Tickets')
         ),
         drawer: const NavDrawer(),
         body: Container(
@@ -37,12 +34,14 @@ class _MovieListingState extends State<MovieListing> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.movie.title,
-                          style: TextStyle(
-                            color: cinemaBrand,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          )),
+                      Expanded(
+                        child: Text(widget.movie.title,
+                            style: TextStyle(
+                              color: cinemaBrand,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
                       SizedBox(width: 10),
                       Text(widget.movie.ageRating,
                           style: TextStyle(
