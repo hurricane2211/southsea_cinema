@@ -16,10 +16,33 @@ class BasketView extends StatefulWidget {
 
 class _BasketViewState extends State<BasketView> {
 
+  String _confirmationMessage = '';
+
   @override
   Widget build(BuildContext context) {
     CartRepository cart = CartRepository.instance;
     List<CartItem> items = cart.getContents();
+
+    Widget content;
+    if (items.isEmpty) {
+      if (_confirmationMessage.isNotEmpty) {
+        content = Column(
+          children: [
+            Text('Empty basket placeholder'),
+            Text(_confirmationMessage)
+          ]
+        );
+
+      }
+      
+      else {
+          content = Text ('Empty basket placeholder');
+      }
+    }
+
+    else {
+      content = Text('Basket List Placeholder');
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -27,7 +50,7 @@ class _BasketViewState extends State<BasketView> {
       ),
       body: SingleChildScrollView(
         padding:EdgeInsets.all(16.0),
-        child: Text('Basket')
+        child: content
       )
     );
   }
