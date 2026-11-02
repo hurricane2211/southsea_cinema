@@ -41,12 +41,14 @@ class _BasketViewState extends State<BasketView> {
                 children: [
                   Row(
                     children: [
-                      Text(
-                        item.movie.title,
-                        style: TextStyle(
-                          color: cinemaBrand,
-                          fontWeight: FontWeight.bold
-                        )
+                      Expanded(
+                        child: Text(
+                            item.movie.title,
+                            style: TextStyle(
+                              color: cinemaBrand,
+                              fontWeight: FontWeight.bold
+                            )
+                        ),
                       ),
                       SizedBox(width: 20),
                        Text(
@@ -55,7 +57,7 @@ class _BasketViewState extends State<BasketView> {
                           color: cinemaFontMuted
                         )
                        )
-      
+                        
                     ],
                   ),
                   Text('£${item.lineTotal.toStringAsFixed(2)}'),
@@ -103,10 +105,12 @@ class _BasketViewState extends State<BasketView> {
 
     contents.add(Text('Basket', style: cinemaHeaderStyle));
     contents.add(SizedBox(height:20));
-
+    contents.add(Text('Items', style: TextStyle(color: cinemaFontMuted, fontSize: 15, decoration: TextDecoration.underline)));
+    contents.add(SizedBox(height: 20));
 
     for (int index = 0; index < items.length; index++) {
       contents.add(_buildItem(cart, items[index], index));
+      contents.add(SizedBox(height: 10));
     }
 
     contents.add(SizedBox(height: 20));
@@ -121,7 +125,7 @@ class _BasketViewState extends State<BasketView> {
     contents.add(
       _buildHelperRow(
         'Total Due', 
-        '£${cart.getTotalPrice().toStringAsFixed(2)}', 
+        '£${(cart.getTotalPrice() + 4.00).toStringAsFixed(2)}', 
         cinemaFontWhite,
         emphasise: true)
     );
