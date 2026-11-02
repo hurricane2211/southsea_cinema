@@ -109,5 +109,48 @@ void main() {
       expect(movie.isAdultOnly, true);
       expect(movie2.isAdultOnly, false);
     });
+
+
+
+    test('JSON conversion works both ways', (){
+      Map<String, dynamic> data = <String, dynamic>{
+        'id': 'TEST',
+        'title': 'Test Movie 1',
+        'releaseYear': 2026,
+        'ageRating': 'PG-13',
+        'description': 'this is a test of the movie model',
+        'price': 7.50,
+        'imagePath': 'assets/images/backrooms2026_poster.png',
+        'screening': 'Monday 18th Oct 2032 @ 15:00'
+      };
+
+      Movie movie = Movie.fromJson(data);
+      expect(movie.id, 'TEST');
+      expect(movie.title, 'Test Movie 1');
+      expect(movie.releaseYear, 2026);
+      expect(movie.ageRating, 'PG-13');
+      expect(movie.description, 'this is a test of the movie model');
+      expect(movie.price, 7.50);
+      expect(movie.imagePath, 'assets/images/backrooms2026_poster.png');
+      expect(movie.screening, 'Monday 18th Oct 2032 @ 15:00');
+      expect(movie.toJson(), data);
+    });
+
+    test('fromJson accepts whole-numbers for price', (){
+      Map<String, dynamic> data = <String, dynamic>{
+        'id': 'TEST',
+        'title': 'Test Movie 1',
+        'releaseYear': 2026,
+        'ageRating': 'PG-13',
+        'description': 'this is a test of the movie model',
+        'price': 5,
+        'imagePath': 'assets/images/backrooms2026_poster.png',
+        'screening': 'Monday 18th Oct 2032 @ 15:00'
+      };
+
+      Movie movie = Movie.fromJson(data);
+      expect(movie.price, 5.0);
+      expect(movie.price, isA<double>());
+    });
   });
 }
