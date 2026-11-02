@@ -1,7 +1,15 @@
+import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:southsea_cinema/models/movie.dart';
 
 class MovieRepository {
+  List<Movie>? _cachedMovies;
+
   List<Movie> getMovies() {
+    List<Movie>? cachedMovies = _cachedMovies;
+    if (cachedMovies!= null) {
+      return cachedMovies;
+    }
     return [
       Movie(
           id: 'backrooms',
@@ -33,6 +41,25 @@ class MovieRepository {
       }
     }
     return null;
+  }
+
+  Future<List<Movie>> loadMoviesFromAsset(
+    {String assetPath = 'assets/data/movies.json'}
+  ) async {
+    String jsonString = await rootBundle.loadString(assetPath);
+    dynamic decodedData = jsonDecode(jsonString);
+    List<dynamic> jsonList = decodedData as List<dynamic>;
+    List<Movie> loadedMovies = [];
+
+    for (dynamic item in jsonList) {
+      Map<String, dynamic> itemMap = item as Map<String, dynamic>;
+      Movie movie = Movie.fromJson(itemMap);
+      loadedMovies.add(movie);
+    }
+
+    _cachedMovies = loadedMovies;
+    return loadedMovies;
+
   }
 
   List<Movie>? getMoviesByAgeRating(String rating) {
