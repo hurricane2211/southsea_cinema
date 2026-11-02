@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/models/cart_item.dart';
+import 'package:southsea_cinema/repositories/cart_repository.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
@@ -98,6 +100,13 @@ class _MovieListingState extends State<MovieListing> {
                     onPressed: () => setState(() {
                           _orderMessage =
                               '$_totaltickets Ticket(s) added to order';
+
+                          CartRepository cart = CartRepository.instance;
+                          CartItem movie = CartItem(movie: widget.movie, quantity: _totaltickets);
+                          cart.addItem(movie);
+                          
+
+                          
                         }),
                     label: 'Add to Order'
                     ),
