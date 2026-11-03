@@ -18,17 +18,16 @@ class _HomeViewState extends State<HomeView> {
   String _errorMessage = '';
 
   @override
-
   void initState() {
     super.initState();
     _loadMovies();
   }
 
   Future<void> _loadMovies() async {
-    try{
+    try {
       MovieRepository repo = MovieRepository();
       List<Movie> movies = await repo.loadMoviesFromAsset();
-      
+
       if (!mounted) {
         return;
       }
@@ -37,21 +36,18 @@ class _HomeViewState extends State<HomeView> {
         _movies = movies;
         _loading = false;
       });
-
     } catch (error) {
-      if(!mounted) {
+      if (!mounted) {
         return;
       }
       setState(() {
         _errorMessage = 'Menu could not load... $error';
         _loading = false;
       });
-
     }
   }
 
   @override
-
   Widget build(BuildContext context) {
     final Widget body;
     if (_loading) {
@@ -60,16 +56,14 @@ class _HomeViewState extends State<HomeView> {
       body = Center(child: Text(_errorMessage));
     } else {
       body = ListView.builder(
-            itemCount: _movies.length,
-            itemBuilder: (context, index) {
-              return MovieCard(movie: _movies[index]);
-            });
+          itemCount: _movies.length,
+          itemBuilder: (context, index) {
+            return MovieCard(movie: _movies[index]);
+          });
     }
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle)
-        ),
+        appBar: AppBar(title: const Text(appTitle)),
         drawer: const NavDrawer(),
         body: body);
   }

@@ -23,9 +23,7 @@ class _MovieListingState extends State<MovieListing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Purchase Movie Tickets')
-        ),
+        appBar: AppBar(title: Text('Purchase Movie Tickets')),
         drawer: const NavDrawer(),
         body: Container(
             padding: EdgeInsets.all(20),
@@ -102,14 +100,11 @@ class _MovieListingState extends State<MovieListing> {
                               '$_totaltickets Ticket(s) added to order';
 
                           CartRepository cart = CartRepository.instance;
-                          CartItem movie = CartItem(movie: widget.movie, quantity: _totaltickets);
+                          CartItem movie = CartItem(
+                              movie: widget.movie, quantity: _totaltickets);
                           cart.addItem(movie);
-                          
-
-                          
                         }),
-                    label: 'Add to Order'
-                    ),
+                    label: 'Add to Order'),
                 SizedBox(height: 5),
                 Text(_orderMessage, style: TextStyle(color: cinemaFontWhite))
               ],

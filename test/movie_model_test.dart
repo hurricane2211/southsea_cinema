@@ -110,9 +110,7 @@ void main() {
       expect(movie2.isAdultOnly, false);
     });
 
-
-
-    test('JSON conversion works both ways', (){
+    test('JSON conversion works both ways', () {
       Map<String, dynamic> data = <String, dynamic>{
         'id': 'TEST',
         'title': 'Test Movie 1',
@@ -136,7 +134,7 @@ void main() {
       expect(movie.toJson(), data);
     });
 
-    test('fromJson accepts whole-numbers for price', (){
+    test('fromJson accepts whole-numbers for price', () {
       Map<String, dynamic> data = <String, dynamic>{
         'id': 'TEST',
         'title': 'Test Movie 1',

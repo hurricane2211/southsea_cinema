@@ -7,7 +7,7 @@ class MovieRepository {
 
   List<Movie> getMovies() {
     List<Movie>? cachedMovies = _cachedMovies;
-    if (cachedMovies!= null) {
+    if (cachedMovies != null) {
       return cachedMovies;
     }
     return [
@@ -44,8 +44,7 @@ class MovieRepository {
   }
 
   Future<List<Movie>> loadMoviesFromAsset(
-    {String assetPath = 'assets/data/movies.json'}
-  ) async {
+      {String assetPath = 'assets/data/movies.json'}) async {
     String jsonString = await rootBundle.loadString(assetPath);
     dynamic decodedData = jsonDecode(jsonString);
     List<dynamic> jsonList = decodedData as List<dynamic>;
@@ -59,7 +58,6 @@ class MovieRepository {
 
     _cachedMovies = loadedMovies;
     return loadedMovies;
-
   }
 
   List<Movie>? getMoviesByAgeRating(String rating) {

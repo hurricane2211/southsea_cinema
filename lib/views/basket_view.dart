@@ -22,90 +22,71 @@ class _BasketViewState extends State<BasketView> {
             padding: EdgeInsets.symmetric(vertical: 64.0),
             child: Text('Basket is Empty...',
                 style: TextStyle(color: cinemaFontMuted))));
-
-
-          
   }
-
 
   Widget _buildItem(CartRepository cart, CartItem item, int index) {
     return ColoredBox(
       color: const Color.fromARGB(255, 40, 41, 47),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0 ),
-        child: Row(
-          children: [
+          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+          child: Row(children: [
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                   Row(
                     children: [
                       Expanded(
-                        child: Text(
-                            item.movie.title,
+                        child: Text(item.movie.title,
                             style: TextStyle(
-                              color: cinemaBrand,
-                              fontWeight: FontWeight.bold
-                            )
-                        ),
+                                color: cinemaBrand,
+                                fontWeight: FontWeight.bold)),
                       ),
                       SizedBox(width: 20),
-                       Text(
-                        '${item.quantity} Ticket(s)',
-                        style: TextStyle(
-                          color: cinemaFontMuted
-                        )
-                       )
-                        
+                      Text('${item.quantity} Ticket(s)',
+                          style: TextStyle(color: cinemaFontMuted))
                     ],
                   ),
                   Text('£${item.lineTotal.toStringAsFixed(2)}'),
-                ]
-              )
-            ),
+                ])),
             IconButton(
-              icon: Icon(Icons.delete_outline, color: cinemaFontWhite),
-              onPressed: () {
-                setState((){
-                  cart.removeItem(index);
-                });
-              }
-            )
-          ]
-        )
-      ),
+                icon: Icon(Icons.delete_outline, color: cinemaFontWhite),
+                onPressed: () {
+                  setState(() {
+                    cart.removeItem(index);
+                  });
+                })
+          ])),
     );
   }
 
-  Widget _buildHelperRow(String label, String value, Color color, {bool emphasise = true}) {
+  Widget _buildHelperRow(String label, String value, Color color,
+      {bool emphasise = true}) {
     TextStyle style;
     if (emphasise) {
-      style = TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 20);
-
+      style =
+          TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 20);
     } else {
       style = TextStyle(color: color, fontSize: 15);
     }
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(label, style: style),
-          Text(value, style: style)
-        ]
-      )
-    );
-
+        padding: EdgeInsets.symmetric(vertical: 4),
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [Text(label, style: style), Text(value, style: style)]));
   }
 
   Widget _buildBasketContents(CartRepository cart, List<CartItem> items) {
     List<Widget> contents = [];
 
     contents.add(Text('Basket', style: cinemaHeaderStyle));
-    contents.add(SizedBox(height:20));
-    contents.add(Text('Items', style: TextStyle(color: cinemaFontMuted, fontSize: 15, decoration: TextDecoration.underline)));
+    contents.add(SizedBox(height: 20));
+    contents.add(Text('Items',
+        style: TextStyle(
+            color: cinemaFontMuted,
+            fontSize: 15,
+            decoration: TextDecoration.underline)));
     contents.add(SizedBox(height: 20));
 
     for (int index = 0; index < items.length; index++) {
@@ -115,49 +96,30 @@ class _BasketViewState extends State<BasketView> {
 
     contents.add(SizedBox(height: 20));
 
-    contents.add(
-      _buildHelperRow(
-        'Service Charge' , 
-        '£${4.00}', 
-        cinemaFontMuted)
-    );
+    contents
+        .add(_buildHelperRow('Service Charge', '£${4.00}', cinemaFontMuted));
 
-    contents.add(
-      _buildHelperRow(
-        'Total Due', 
-        '£${(cart.getTotalPrice() + 4.00).toStringAsFixed(2)}', 
-        cinemaFontWhite,
-        emphasise: true)
-    );
-    
+    contents.add(_buildHelperRow('Total Due',
+        '£${(cart.getTotalPrice() + 4.00).toStringAsFixed(2)}', cinemaFontWhite,
+        emphasise: true));
+
     contents.add(SizedBox(height: 24));
 
-    contents.add(
-      SizedBox(
+    contents.add(SizedBox(
         width: double.infinity,
         child: PrimaryButton(
-          label: 'Checkout',
-          onPressed: () {
-            setState(() {
-              cart.clear();
-              _confirmationMessage = 'Order Confirmed!';
-
-            });
-          }
-        )
-      )
-    );
+            label: 'Checkout',
+            onPressed: () {
+              setState(() {
+                cart.clear();
+                _confirmationMessage = 'Order Confirmed!';
+              });
+            })));
 
     if (_confirmationMessage.isNotEmpty) {
       contents.add(SizedBox(height: 5));
       contents.add(
-        Text(
-          _confirmationMessage,
-          style: TextStyle(
-            color: cinemaFontMuted
-          )
-        )
-      );
+          Text(_confirmationMessage, style: TextStyle(color: cinemaFontMuted)));
     }
 
     return Column(

@@ -18,7 +18,6 @@ class Movie {
       required this.imagePath,
       required this.screening});
 
-
   factory Movie.fromJson(Map<String, dynamic> json) {
     String id = json['id'] as String;
     String title = json['title'] as String;
@@ -30,23 +29,19 @@ class Movie {
     String imagePath = json['imagePath'] as String;
     String screening = json['screening'] as String;
 
-
     return Movie(
-      id: id,
-      title: title,
-      releaseYear: releaseYear,
-      ageRating: ageRating,
-      description: description,
-      price: price,
-      imagePath: imagePath,
-      screening: screening
-    );
-
+        id: id,
+        title: title,
+        releaseYear: releaseYear,
+        ageRating: ageRating,
+        description: description,
+        price: price,
+        imagePath: imagePath,
+        screening: screening);
   }
 
   Map<String, dynamic> toJson() {
-    Map<String, dynamic> data = <String, dynamic> {
-      
+    Map<String, dynamic> data = <String, dynamic>{
       'id': id,
       'title': title,
       'releaseYear': releaseYear,
@@ -55,10 +50,8 @@ class Movie {
       'price': price,
       'imagePath': imagePath,
       'screening': screening
-
     };
     return data;
-
   }
 
   String get formattedPrice {

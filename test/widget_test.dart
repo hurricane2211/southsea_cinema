@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/main.dart';
 import 'package:southsea_cinema/views/home_view.dart';
 
 void main() {
+
+  setUp(() {
+    rootBundle.clear();
+  });
   group('App Smoke Tests', () {
     testWidgets('Display menu screen as home screen',
         (WidgetTester tester) async {

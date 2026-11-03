@@ -68,15 +68,13 @@ class MovieCard extends StatelessWidget {
                               style: TextStyle(color: cinemaFontMuted)),
                         ),
                         PrimaryButton(
-
                             onPressed: () {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return MovieListing(movie: movie);
                               }));
                             },
-                            label: 'Book Now'
-                            )
+                            label: 'Book Now')
                       ])
                 ],
               ),
@@ -143,8 +141,7 @@ class MovieCard extends StatelessWidget {
                                 return MovieListing(movie: movie);
                               }));
                             },
-                            label: 'Book Now'
-                        )
+                            label: 'Book Now')
                       ])
                 ],
               ),
