@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/models/cart_item.dart';
+import 'package:southsea_cinema/repositories/cart_repository.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/models/movie.dart';
+import 'package:southsea_cinema/widgets/primary_button.dart';
 
 class MovieListing extends StatefulWidget {
-  const MovieListing({super.key});
+  final Movie movie;
+  const MovieListing({super.key, required this.movie});
 
   @override
   State<StatefulWidget> createState() {
@@ -18,12 +23,7 @@ class _MovieListingState extends State<MovieListing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle, style: cinemaHeaderStyle),
-          backgroundColor: cinemaSurface,
-          iconTheme: const IconThemeData(color: cinemaBrand),
-          elevation: 0,
-        ),
+        appBar: AppBar(title: Text('Purchase Movie Tickets')),
         drawer: const NavDrawer(),
         body: Container(
             padding: EdgeInsets.all(20),
@@ -31,23 +31,35 @@ class _MovieListingState extends State<MovieListing> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Backrooms (2026) (15)',
-                    style: TextStyle(
-                      color: cinemaFontWhite,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    )),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Text(widget.movie.title,
+                            style: TextStyle(
+                              color: cinemaBrand,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
+                      SizedBox(width: 10),
+                      Text(widget.movie.ageRating,
+                          style: TextStyle(
+                              color: cinemaFontMuted,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold))
+                    ]),
                 SizedBox(height: 40),
                 SizedBox(
                     width: 1000,
-                    child: Text(
-                        'A strange doorway appears in the basement of a furniture showroom, leading to an endless network of interconnected rooms where time bends and the only thing scarier than getting lost is the sense that something is lying in wait.',
+                    child: Text(widget.movie.description,
                         style: TextStyle(color: cinemaFontWhite))),
                 SizedBox(height: 20),
                 Text('Southsea Cinema Room',
                     style: TextStyle(color: cinemaFontMuted)),
                 SizedBox(height: 5),
-                Text('Thursday 22 Oct 2026  18:00 ',
+                Text('${widget.movie.screening} @ 18:00 ',
                     style: TextStyle(color: cinemaFontMuted)),
                 SizedBox(height: 20),
                 Text(
@@ -78,30 +90,23 @@ class _MovieListingState extends State<MovieListing> {
                         DropdownMenuEntry(value: 4, label: '4'),
                         DropdownMenuEntry(value: 5, label: '5')
                       ]),
-                  SizedBox(width: 15),
-                  Text('Adult (£7.50)')
+                  SizedBox(width: 10),
+                  Text('Adult (${widget.movie.formattedPrice})')
                 ]),
+                SizedBox(height: 10),
+                PrimaryButton(
+                    onPressed: () => setState(() {
+                          _orderMessage =
+                              '$_totaltickets Ticket(s) added to order';
+
+                          CartRepository cart = CartRepository.instance;
+                          CartItem movie = CartItem(
+                              movie: widget.movie, quantity: _totaltickets);
+                          cart.addItem(movie);
+                        }),
+                    label: 'Add to Order'),
                 SizedBox(height: 5),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: cinemaBrandDark,
-                        foregroundColor: cinemaBackground),
-                    onPressed: () =>
-                        setState(() {
-                          _orderMessage = '$_totaltickets Ticket(s) added to order';
-                          }),
-                    child: Text('Add to Order')),
-
-
-                SizedBox(height: 5),
-
-                Text(
-                  _orderMessage,
-                  style: TextStyle(
-                    color: cinemaFontWhite
-                  ))
-
-                  
+                Text(_orderMessage, style: TextStyle(color: cinemaFontWhite))
               ],
             )));
   }
