@@ -65,7 +65,6 @@ class _HomeViewState extends State<HomeView> {
               return MovieCard(movie: _movies[index]);
             });
     }
-    final List<Movie> movies = _movies;
 
     return Scaffold(
         appBar: AppBar(
