@@ -3,6 +3,9 @@ import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/repositories/movie_repository.dart';
 
 void main() {
+
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   group('Movie Repository Unit Tests', () {
     test('getMovies returns two movies', () {
       MovieRepository repo = MovieRepository();
@@ -84,6 +87,18 @@ void main() {
           expect(movie.price <= 7.60, true);
         }
       }
+    });
+
+
+    test('loadMoviesFromAsset reads the bundled JSON', () async {
+      MovieRepository repo = MovieRepository();
+      List<Movie> movies = await repo.loadMoviesFromAsset();
+
+      expect(movies.length, 2);
+      expect(movies[0].id, 'backrooms');
+      expect(movies[1].id, 'mission_impossible_rogue_nation');
+      expect(repo.getMovies(), movies);
+
     });
   });
 }
