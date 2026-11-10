@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/user_settings.dart';
+import 'package:southsea_cinema/widgets/primary_button.dart';
 
 
 class SettingsView extends StatefulWidget {
@@ -106,6 +107,41 @@ class _SettingsViewState extends State<SettingsView> {
             )
           ),
           SizedBox(height: 16),
+
+          Row(
+            children: [
+              Expanded(
+                child: Text('Receive Newsletter and offers'),
+              ),
+              Switch(
+                value: _recieveNewsletter,
+                onChanged: (bool value) {
+                  setState(() {
+                    _recieveNewsletter = value;
+                  });
+                }
+              )
+            ]
+          ),
+
+          SizedBox(height: 20),
+
+          SizedBox(
+            width: double.infinity,
+            child: PrimaryButton(
+              label: 'Save Settings',
+              onPressed: _saveSettings,
+            )), 
+
+            if (_confirmationMessage.isNotEmpty) ...[
+              SizedBox(height: 12),
+              Text(
+                _confirmationMessage,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                )
+              )
+            ]
 
 
 
