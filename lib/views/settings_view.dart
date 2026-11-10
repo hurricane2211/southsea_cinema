@@ -3,19 +3,16 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/user_settings.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
 
-
 class SettingsView extends StatefulWidget {
-  SettingsView({super.key});
+  const SettingsView({super.key});
 
   @override
   State<SettingsView> createState() {
     return _SettingsViewState();
   }
-} 
-
+}
 
 class _SettingsViewState extends State<SettingsView> {
-
   late TextEditingController _nameController;
   late TextEditingController _addressController;
   late TextEditingController _emailController;
@@ -44,113 +41,79 @@ class _SettingsViewState extends State<SettingsView> {
     String email = _emailController.text.trim();
 
     UserSettings settings = UserSettings(
-      name: name,
-      address: address, 
-      email: email,
-      recieveNewsLetter: _recieveNewsletter
-    );
+        name: name,
+        address: address,
+        email: email,
+        recieveNewsLetter: _recieveNewsletter);
 
-  setState(() {
-    _confirmationMessage = 'Settings saved for ${settings.name}';
-  });
+    setState(() {
+      _confirmationMessage = 'Settings saved for ${settings.name}';
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(appTitle, style: cinemaHeaderStyle),
-      ),
-
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(17.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Customer Profile',
-            style: TextStyle(
-              color: cinemaBrand,
-              fontSize: 22,
-              fontWeight: FontWeight.bold
-            )
-          ),
-          SizedBox(height: 16),
-
-          TextField(
-            controller: _nameController,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Full name',
-              hintText: '(eg. John Smith)'
-            )
-          ),
-          SizedBox(height: 16),
-          
-          TextField(
-            controller: _addressController,
-            maxLines: 3,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Delivery Address',
-              hintText: '(enter full delivery address)'
-            )
-          ),
-          SizedBox(height: 16),
-
-          TextField(
-            controller: _emailController,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Email Address',
-              hintText: '(eg. example@example.com)'
-            )
-          ),
-          SizedBox(height: 16),
-
-          Row(
-            children: [
-              Expanded(
-                child: Text('Receive Newsletter and offers'),
-              ),
-              Switch(
-                value: _recieveNewsletter,
-                onChanged: (bool value) {
-                  setState(() {
-                    _recieveNewsletter = value;
-                  });
-                }
-              )
-            ]
-          ),
-
-          SizedBox(height: 20),
-
-          SizedBox(
-            width: double.infinity,
-            child: PrimaryButton(
-              label: 'Save Settings',
-              onPressed: _saveSettings,
-            )), 
-
-            if (_confirmationMessage.isNotEmpty) ...[
-              SizedBox(height: 12),
-              Text(
-                _confirmationMessage,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold
-                )
-              )
-            ]
-
-
-
-          ]
-        )
-      )
-
-    );
-
+        appBar: AppBar(
+          title: Text(appTitle, style: cinemaHeaderStyle),
+        ),
+        body: SingleChildScrollView(
+            padding: EdgeInsets.all(17.0),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text('Customer Profile',
+                  style: TextStyle(
+                      color: cinemaBrand,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold)),
+              SizedBox(height: 16),
+              TextField(
+                  controller: _nameController,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Full name',
+                      hintText: '(eg. John Smith)')),
+              SizedBox(height: 16),
+              TextField(
+                  controller: _addressController,
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Delivery Address',
+                      hintText: '(enter full delivery address)')),
+              SizedBox(height: 16),
+              TextField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Email Address',
+                      hintText: '(eg. example@example.com)')),
+              SizedBox(height: 16),
+              Row(children: [
+                Expanded(
+                  child: Text('Receive Newsletter and offers'),
+                ),
+                Switch(
+                    value: _recieveNewsletter,
+                    onChanged: (bool value) {
+                      setState(() {
+                        _recieveNewsletter = value;
+                      });
+                    })
+              ]),
+              SizedBox(height: 20),
+              SizedBox(
+                  width: double.infinity,
+                  child: PrimaryButton(
+                    label: 'Save Settings',
+                    onPressed: _saveSettings,
+                  )),
+              if (_confirmationMessage.isNotEmpty) ...[
+                SizedBox(height: 12),
+                Text(_confirmationMessage,
+                    style: TextStyle(fontWeight: FontWeight.bold))
+              ]
+            ])));
   }
 }
-

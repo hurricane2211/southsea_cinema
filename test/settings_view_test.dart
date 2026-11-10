@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/views/settings_view.dart';
 
-
 void main() {
-  testWidgets('SettingsView displays correct fields and switch', (WidgetTester tester) async {
+  testWidgets('SettingsView displays correct fields and switch',
+      (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(home: SettingsView()));
 
     expect(find.text('Customer Profile'), findsOneWidget);
@@ -13,7 +13,8 @@ void main() {
     expect(find.text('Save Settings'), findsOneWidget);
   });
 
-  testWidgets('Toggling switch and save settings button updates state', (WidgetTester tester) async {
+  testWidgets('Toggling switch and save settings button updates state',
+      (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(home: SettingsView()));
 
     Finder nameField = find.widgetWithText(TextField, 'Full name');
@@ -31,6 +32,5 @@ void main() {
     await tester.pump();
 
     expect(find.text('Settings saved for John Smith'), findsOneWidget);
-
   });
 }
