@@ -51,6 +51,8 @@ class _MovieListingState extends State<MovieListing> {
                               fontWeight: FontWeight.bold))
                     ]),
                 SizedBox(height: 40),
+                Expanded(child: Image.asset(widget.movie.imagePath, fit: BoxFit.fill,)),
+                SizedBox(height: 40),
                 SizedBox(
                     width: 1000,
                     child: Text(widget.movie.description,
