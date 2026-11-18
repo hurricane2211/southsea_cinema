@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/cart_item.dart';
 import 'package:southsea_cinema/repositories/cart_repository.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
 
 class BasketView extends StatefulWidget {
@@ -153,6 +154,7 @@ class _BasketViewState extends State<BasketView> {
         appBar: AppBar(
           title: Text(appTitle, style: cinemaHeaderStyle),
         ),
+        drawer: NavDrawer(),
         body: SingleChildScrollView(
             padding: EdgeInsets.all(16.0), child: content));
   }

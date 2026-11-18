@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/user_settings.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -116,6 +117,7 @@ class _SettingsViewState extends State<SettingsView> {
         appBar: AppBar(
           title: Text(appTitle, style: cinemaHeaderStyle),
         ),
+        drawer: const NavDrawer(),
         body: SingleChildScrollView(
             padding: EdgeInsets.all(17.0),
             child:
